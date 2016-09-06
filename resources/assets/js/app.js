@@ -15,6 +15,9 @@ require('./bootstrap');
 
 Vue.component('example', require('./components/Example.vue'));
 
-const app = new Vue({
-    el: 'body'
-});
+// const app = new Vue({
+//     el: 'body',
+//     data:{
+//     	nama:'aditya'
+//     }
+// });

@@ -40,3 +40,7 @@ Route::get('/customers',function(){
 return view('sample',compact('users'));
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

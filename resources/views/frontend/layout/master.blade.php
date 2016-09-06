@@ -4,7 +4,7 @@
 	<title></title>
 </head>
 <link rel="stylesheet" type="text/css" href="{!! asset('css/app.css') !!}">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css">
 <body>
 
 @yield('content')
