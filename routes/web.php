@@ -11,36 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth'],function(){
+    Route::resource('user','UserController');
+    Route::POST('logout',['uses'=>'UserController@logout']);
 });
 
-Route::get('/customers',function(){
-	$begin = memory_get_usage();
-    $faker = Faker\Factory::create();
+Route::get('/',['uses'=>'UserController@login','as'=>'login']);
+// Route::POST('login',['uses'=>'UserController@authenticate']);
 
-    $limit = 10000;
 
-    $users=App\User::all();
+Route::get('mobil',['uses'=>'UserController@cetakMobil']);
 
-    // for ($i = 0; $i < $limit; $i++) {
-    //     App\User::create([
-    //     		'name'=>$faker->name,
-    //     		'email'=>$faker->unique()->email,
-    //     		'phone'=>$faker->phoneNumber
-    //     	]);
-    // }
+Route::resource('departement','DepartementController');
 
-    // foreach ($users->chunk(100) as $user_chunk) {
-    // 	foreach ($user_chunk as $user) {
-    // 		echo $user->name.'<br>';
-    // 	}
-    // }
+Route::resource('permission','PermissionController');
 
-return view('sample',compact('users'));
+Route::resource('role','RoleController');
+// Auth::routes();
 
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');

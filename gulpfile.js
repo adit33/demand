@@ -15,5 +15,16 @@ require('laravel-elixir-vue');
 
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+    	.styles([//'./node_modules/datatables.net-dt/css/jquery.dataTables.css',
+    		'./node_modules/datatables.net-bs/css/dataTables.bootstrap.css',
+    		'./node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.css',
+    		'./node_modules/sweetalert/dist/sweetalert.css',])
+       	.webpack('app.js')
+       	.scripts([
+       		'./node_modules/sweetalert/dist/sweetalert.min.js',
+       		'./node_modules/datatables.net/js/jquery.dataTables.js',
+       		'./node_modules/datatables.net-bs/js/dataTables.bootstrap.js',
+       		// './node_modules/datatables.net-buttons/js/dataTables.buttons.js',
+       		'./node_modules/datatables.net-buttons-bs/js/buttons.bootstrap.js',
+       		]);
 });

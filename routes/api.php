@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::POST('departement/store',['uses'=>'DepartementController@store','as'=>'api.departement.store']);
