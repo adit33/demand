@@ -12,9 +12,11 @@
 */
 
 Route::group(['middleware' => 'auth'],function(){
-    Route::resource('user','UserController');
-    Route::POST('logout',['uses'=>'UserController@logout']);
+  
 });
+
+  Route::resource('user','UserController');
+    Route::POST('logout',['uses'=>'UserController@logout']);
 
 Route::get('/',['uses'=>'UserController@login','as'=>'login']);
 // Route::POST('login',['uses'=>'UserController@authenticate']);

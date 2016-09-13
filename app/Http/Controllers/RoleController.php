@@ -12,6 +12,8 @@ use App\Models\Role;
 
 use App\DataTables\RoleDataTable;
 
+use Validator;
+
 
 
 class RoleController extends Controller
@@ -48,7 +50,34 @@ class RoleController extends Controller
     }
 
     public function update(Request $request,$id){
+         $role=Role::find($id);
+        
+        $rules=[
+            'nama_role'=>'required|unique:role,nama_role,'.$role->id.',id',
 
+        ];
+
+        $pesan=[
+            'nama_role.required'=>'nama role harus di isi',
+            'nama_role.unique'=>'nama role sudah ada'
+        ];
+
+         $validator = Validator::make($request->all(), $rules, $pesan);
+        if ($validator->fails()){
+        return redirect()->back()
+            ->withErrors($validator);
+        }
+
+        $nama_permission=$request->input('nama_permission');
+        $permission_role=$role->permissions;
+         $permission = Permission::whereIn('nama_permission', $nama_permission)->pluck('id')->toArray();        
+
+            $role->nama_role=$request->input('nama_role');
+            $role->save();
+            
+            $role->updatePermission($permission);
+
+        return redirect('role');
     }
 
     public function destroy($id){

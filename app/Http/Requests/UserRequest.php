@@ -26,7 +26,9 @@ class UserRequest extends FormRequest
         return [
             'nik'=>'required|unique:user,nik',
             'nama'=>'required',
-            'password'=>'required'
+            'password'=>'required|confirmed',
+            'password_confirmation'=>'required',
+            'nama_role'=>'required'
         ];
     }
 }

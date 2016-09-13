@@ -59,11 +59,26 @@
                             <label for="password" class="col-md-4 control-label">Konfirmasi Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password_confirmation" required>
 
                                 <?php if($errors->has('password_confirmation')): ?>
                                     <span class="help-block">
                                         <strong><?php echo e($errors->first('password_confirmation')); ?></strong>
+                                    </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('nama_role') ? ' has-error' : ''); ?>">
+                            <label for="role_id" class="col-md-4 control-label">Role</label>
+
+                            <div class="col-md-6">
+                                <?php echo Form::select('nama_role',App\Models\Role::pluck('nama_role','nama_role'),null,['class'=>'form-control','placeholder'=>'Pilih Role']); ?>
+
+
+                                <?php if($errors->has('nama_role')): ?>
+                                    <span class="help-block">
+                                        <strong><?php echo e($errors->first('nama_role')); ?></strong>
                                     </span>
                                 <?php endif; ?>
                             </div>

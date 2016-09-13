@@ -83,5 +83,6 @@
 
     <!-- Scripts -->
     <script src="<?php echo asset('js/app.js'); ?>"></script>
+    <?php echo $__env->yieldPushContent('scripts'); ?>
 </body>
 </html>

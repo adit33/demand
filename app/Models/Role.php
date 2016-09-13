@@ -11,6 +11,11 @@ class Role extends Model
     protected $fillable=['nama_role'];
     public $timestamps=false;
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class,'role_user');
+    }
+
     public function permissions()
     {
         return $this->belongsToMany(Permission::class);
@@ -23,6 +28,12 @@ class Role extends Model
         }
  
         return $this->permissions()->attach($permission);
+    }
+
+
+    public function updatePermission($permission)
+    {
+        return $this->permissions()->sync($permission);
     }
 
 }

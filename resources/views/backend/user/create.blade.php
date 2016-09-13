@@ -58,11 +58,25 @@
                             <label for="password" class="col-md-4 control-label">Konfirmasi Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password_confirmation" required>
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('nama_role') ? ' has-error' : '' }}">
+                            <label for="role_id" class="col-md-4 control-label">Role</label>
+
+                            <div class="col-md-6">
+                                {!! Form::select('nama_role',App\Models\Role::pluck('nama_role','nama_role'),null,['class'=>'form-control','placeholder'=>'Pilih Role']) !!}
+
+                                @if ($errors->has('nama_role'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nama_role') }}</strong>
                                     </span>
                                 @endif
                             </div>

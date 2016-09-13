@@ -10,7 +10,9 @@ use App\Http\Requests\UserRequest;
 
 use App\Models\User;
 
-use Validator,Auth,Session;
+use App\DataTables\UserDataTable;
+
+use Validator,Auth,Session,Crypt;
 
 
 class UserController extends Controller
@@ -18,6 +20,47 @@ class UserController extends Controller
 	public function __construct(User $model_user){
 		$this->model_user=$model_user;
 	}
+
+    public function index(UserDataTable $dataTable){
+        return $dataTable->render('backend.user.index');
+    }
+
+    public function edit($id){
+        $id=Crypt::decrypt($id);
+        $user=User::find($id);
+        
+        $usr=$user->roles;
+        foreach ($usr as $user_role) {
+        $nama_role=$user_role->nama_role;
+        } 
+
+        return View('backend.user.edit',compact('user','nama_role'));
+    }
+
+    public function update($id,Request $request){
+        $user=User::find($id);
+        $user->nik=$request->input('nik');
+        $user->nama=$request->input('nama');
+        $user->password=bcrypt($request->input('password'));
+        $user->updateRole($request->input('nama_role'));
+        $user->save();
+
+    }
+
+    public function destroy($id){
+        $user=User::find($id);
+
+        $usr=$user->roles;
+        
+        foreach ($usr as $user_role) {
+        $nama_role=$user_role->nama_role;
+        } 
+
+        $user->revokeRole($nama_role);
+        $user->delete();
+
+        return redirect()->route('user.index');
+    }
 
     public function login()
     {
@@ -34,7 +77,7 @@ class UserController extends Controller
         $data=[
         	'nik'=>$request->input('nik'),
         	'password'=>$request->input('password')
-        	];
+        ];
 
 
 
@@ -66,8 +109,9 @@ class UserController extends Controller
     	$data=[
     		'nik'=>$request->input('nik'),
     		'nama'=>$request->input('nama'),
-    		'password'=>bcrypt($request->input('password')),
-    		'password_confirmation'=>$request->input('password_confirmation')
+    		'password'=>$request->input('password'),
+    		'password_confirmation'=>$request->input('password_confirmation'),
+            'nama_role'=>$request->input('nama_role')
     	];
 
     	 $validator=Validator::make($data,$request->rules());
@@ -77,10 +121,15 @@ class UserController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->except('password'));
         }
+        $user=new User;
+        
+        $user->nik=$request->input('nik');
+        $user->nama=$request->input('nama');
+        $user->password=bcrypt($request->input('password'));
+    	$user->assignRole($request->input('nama_role'));
+        $user->save();
 
-    	User::create($data);
-
-    	return redirect()->route('user.create');
+        return redirect()->route('user.create');
     }
 
     public function logout()
@@ -94,8 +143,4 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
-    public function cetakMobil()
-    {
-    	return $this->model_user->mobil();
-    }
 }
