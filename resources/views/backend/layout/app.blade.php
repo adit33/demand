@@ -22,7 +22,7 @@
     </script>
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-default navbar-static-top">
         <div class="container">
             <div class="navbar-header">
 
@@ -42,9 +42,19 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
+                 <ul class="nav navbar-nav">
                     &nbsp;
+                    <li></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{!! route('user.index') !!}">User</a></li>
+                        <li><a href="{!! route('role.index') !!}">Role</a></li>
+                        <li><a href="{!! route('permission.index') !!}">Permission</a></li>
+                      </ul>
+                    </li>
                 </ul>
+
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
@@ -56,7 +66,7 @@
                      @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                                {{ Auth::user()->nama }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">

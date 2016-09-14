@@ -18,6 +18,13 @@ elixir(mix => {
     	.styles([//'./node_modules/datatables.net-dt/css/jquery.dataTables.css',
     		'./node_modules/datatables.net-bs/css/dataTables.bootstrap.css',
     		'./node_modules/datatables.net-buttons-bs/css/buttons.bootstrap.css',
+        './node_modules/fonts/fonts.css',
+        // './node_modules/fonts/Raleway_300_normal.woff',
+        // './node_modules/fonts/Raleway_400_normal.woff',
+        // './node_modules/fonts/Raleway_600_normal.woff',
+        // './node_modules/fonts/Raleway_300_normal.ttf',
+        // './node_modules/fonts/Raleway_400_normal.ttf',
+        // './node_modules/fonts/Raleway_600_normal.ttf',
     		'./node_modules/sweetalert/dist/sweetalert.css',])
        	.webpack('app.js')
        	.scripts([

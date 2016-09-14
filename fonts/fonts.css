@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 300;
+    src: url(Raleway_300_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Raleway_300_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Raleway_300_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/raleway/v11/-_Ctzj9b56b8RgXW8FAriRsxEYwM7FgeyaSgU71cLG0.woff */
+        url(Raleway_300_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/raleway/v11/-_Ctzj9b56b8RgXW8FAricDdSZkkecOE1hvV7ZHvhyU.ttf */
+        url(Raleway_300_normal.svg#Raleway_300_normal) format('svg'); /* {{svg-gf-url}} */
+}
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    src: url(Raleway_400_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Raleway_400_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Raleway_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/raleway/v11/IczWvq5y_Cwwv_rBjOtT0w.woff */
+        url(Raleway_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/raleway/v11/UAnF6lSK1JNc1tqTiG8pNALUuEpTyoUstqEm5AMlJo4.ttf */
+        url(Raleway_400_normal.svg#Raleway_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=IP_NSg73bUZGuyb3zF6qcQ&skey=30a27f2564731c64&v=v11#Raleway */
+}
+@font-face {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    src: url(Raleway_600_normal.eot); /* {{embedded-opentype-gf-url}} */
+    src: local('☺'),
+        url(Raleway_600_normal.eot?#iefix) format('embedded-opentype'), /* {{embedded-opentype-gf-url}} */
+        url(Raleway_600_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/raleway/v11/xkvoNo9fC8O2RDydKj12bxsxEYwM7FgeyaSgU71cLG0.woff */
+        url(Raleway_600_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/raleway/v11/xkvoNo9fC8O2RDydKj12b8DdSZkkecOE1hvV7ZHvhyU.ttf */
+        url(Raleway_600_normal.svg#Raleway_600_normal) format('svg'); /* {{svg-gf-url}} */
+}

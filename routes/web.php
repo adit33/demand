@@ -12,23 +12,25 @@
 */
 
 Route::group(['middleware' => 'auth'],function(){
-  
+	Route::resource('user','UserController');
+
+	Route::POST('logout',['uses'=>'UserController@logout']);
+
+	Route::get('mobil',['uses'=>'UserController@cetakMobil']);
+
+	Route::resource('departement','DepartementController');
+
+	Route::resource('permission','PermissionController');
+
+	Route::resource('role','RoleController');  
 });
 
-  Route::resource('user','UserController');
-    Route::POST('logout',['uses'=>'UserController@logout']);
-
 Route::get('/',['uses'=>'UserController@login','as'=>'login']);
-// Route::POST('login',['uses'=>'UserController@authenticate']);
 
+Route::POST('login',['uses'=>'UserController@authenticate']);
 
-Route::get('mobil',['uses'=>'UserController@cetakMobil']);
+Route::get('test',['uses'=>'TestController@create']);
 
-Route::resource('departement','DepartementController');
-
-Route::resource('permission','PermissionController');
-
-Route::resource('role','RoleController');
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index');

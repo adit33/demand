@@ -44,6 +44,15 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     &nbsp;
+                    <li></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Master <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="<?php echo route('user.index'); ?>">User</a></li>
+                        <li><a href="<?php echo route('role.index'); ?>">Role</a></li>
+                        <li><a href="<?php echo route('permission.index'); ?>">Permission</a></li>
+                      </ul>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
